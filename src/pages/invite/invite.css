@@ -1,0 +1,28 @@
+.form-group {
+    width: 100%;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.pending-list {
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.pending-list ul {
+    width: 100%;
+
+}
+.pending-list ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}

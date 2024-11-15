@@ -1,0 +1,41 @@
+.guests-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.invite-send {
+    margin-top: 1rem;
+}
+
+.guests-section h3 {
+    position: relative;
+    width: 100%;
+}
+
+.guests-section h3 button {
+    position: absolute;
+    width: 120px;
+    top: 0;
+    right: 0;
+    margin: 0;
+}
+
+.guests-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.guests-section table th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+}
+
+.guests-section table td {
+    padding: 10px;
+    border-bottom: 1px solid #f2f2f2;
+    background-color: white;
+}
