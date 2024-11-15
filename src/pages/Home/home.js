@@ -2,19 +2,41 @@ import './home.css';
 
 import { ReactComponent as EditIcon } from '../../assets/icons/edit.svg';
 import { ReactComponent as DeleteIcon } from '../../assets/icons/delete.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { fetchEvents } from '../../services/api';
 
 function Home() {
     const navigate = useNavigate();
 
-    const [events, setEvents] = useState([
-        { id: 1, title: 'Fiesta de 15 Giuli', eventDate: '2023-12-15' },
-        { id: 2, title: 'Casamiento Carolina', eventDate: '2023-10-10' },
-        { id: 3, title: 'Seminario Anual 2024', eventDate: '2024-06-01' },
-    ]);
+    const [events, setEvents] = useState();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
+    useEffect(() => {
+        getEvents();
+    }, []);
+
+    const getEvents = async () => {
+        try {
+            const eventsData = await fetchEvents();
+            setEvents(eventsData);
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+    
   return (
     <div className="container">
         <section className='flex-row'>
@@ -22,12 +44,12 @@ function Home() {
             <button className="btn new-event" onClick={() => navigate('/new-event')}>+</button>
         </section>
         <section className="events-section">
-            <ul class="events">
+            <ul className="events">
                 {events.map(event => (
-                    <li class="flex-row">
-                        <span>{event.title}</span>
-                        <span>{event.eventDate}</span>
-                        <div class="actions flex-row">
+                    <li className="flex-row" key={event.id}>
+                        <span>{event.event_name}</span>
+                        <span>{event.event_date}</span>
+                        <div className="actions flex-row">
                             <EditIcon onClick={() => navigate(`/event-detail/${event.id}`)} />
                             <DeleteIcon />
                         </div>

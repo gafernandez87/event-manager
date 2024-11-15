@@ -22,7 +22,7 @@ function NewEvent() {
   }
 
     return (
-      <div className="container new-event">
+      <div>
         <BackIcon onClick={goHome} className="icon"/>
         <h1 className="text-center mt-3">Nuevo Evento</h1>
         <form onSubmit={handleSubmit}>

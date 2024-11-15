@@ -16,20 +16,16 @@ import Invite from './pages/invite/invite';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <React.StrictMode>
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/new-event" element={<NewEvent />} />
-          <Route path="/event-detail/:id" element={<EventDetail />} />
-          <Route path="/event-detail/:id/invite" element={<Invite />} />
-        </Routes>
-      </Layout>
-    </Router>
-  </React.StrictMode>
-  </React.StrictMode>
+  <Router>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/new-event" element={<NewEvent />} />
+        <Route path="/event-detail/:id" element={<EventDetail />} />
+        <Route path="/event-detail/:id/invite" element={<Invite />} />
+      </Routes>
+    </Layout>
+  </Router>
 );
 
 reportWebVitals();
