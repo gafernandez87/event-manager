@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { ReactComponent as BackIcon } from '../../assets/icons/back.svg';
 import { useNavigate } from 'react-router-dom';
 
+import {postEvent} from '../../services/api';
+
 import './new-event.css';
+import Alert from '../../components/alert/alert';
 
 function NewEvent() {
     const navigate = useNavigate();
@@ -10,19 +13,26 @@ function NewEvent() {
     const [eventName, setEventName] = useState('');
     const [eventDate, setEventDate] = useState('');
     const [eventNotes, setEventNotes] = useState('');
+    const [error, setError] = useState(null);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
-      // Aquí puedes manejar la lógica para crear el evento
-      console.log('Evento creado:', { eventName, eventDate, eventNotes });
+      try {
+        await postEvent({ eventName, eventDate, notes: eventNotes });
+        goHome();
+      } catch(e) {
+        setError(e.message || 'Error al crear el evento');
+      }
     };
 
     const goHome = () => {        
       navigate('/');
-  }
+    }
+
 
     return (
       <div>
+        {error && <Alert message={error} onClose={() => setError(null)} />}
         <BackIcon onClick={goHome} className="icon"/>
         <h1 className="text-center mt-3">Nuevo Evento</h1>
         <form onSubmit={handleSubmit}>

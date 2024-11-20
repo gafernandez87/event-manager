@@ -53,7 +53,6 @@ function EventDetail() {
     return <div>Error: {error}</div>;
   }
 
-  console.log('guessDetail', guessDetail)
   if(guessDetail) {
     return <Modal onClose={() => setGuestDetail(null)}>
       {guessDetail.name} {guessDetail.last_name} {guessDetail.count} {guessDetail.status} {guessDetail.email}

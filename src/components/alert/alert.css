@@ -1,0 +1,25 @@
+.alert-error {
+    background-color: var(--color-error);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    position: fixed;
+    width: 95%;
+  }
+  
+  .alert-error-message {
+    flex-grow: 1;
+  }
+  
+  .alert-error-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  }

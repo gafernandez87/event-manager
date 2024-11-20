@@ -15,7 +15,12 @@ function Home() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        getEvents();
+        const token = localStorage.getItem('event-manager-token');
+        if (!token) {
+            navigate('/login');
+        } else {
+            getEvents();
+        }
     }, []);
 
     const getEvents = async () => {
